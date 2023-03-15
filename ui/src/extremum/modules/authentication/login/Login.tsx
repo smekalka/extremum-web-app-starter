@@ -45,10 +45,10 @@ function Login() {
     });
 
     if (tokenData) {
-      localStorage.setItem('token', JSON.stringify(tokenData));
-      navigate("/app");
-    } else {
+      localStorage.setItem('token', tokenData.access_token);
       navigate("/");
+    } else {
+      navigate("/login");
     }
   };
 

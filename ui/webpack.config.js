@@ -28,6 +28,8 @@ module.exports = {
         filename: '../dist/index.html'
     })],
     devServer:{
+        historyApiFallback: true,
+        contentBase: './',
         hot:true
     },
     resolve: {
