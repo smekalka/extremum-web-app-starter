@@ -1,18 +1,26 @@
-import React, {FC, ReactNode} from 'react';
+import React, {FC, ReactNode, useState} from 'react';
 import ExtremumClient from "extremum-sdk";
+import config from '../../../config.json';
 
 interface ISDKProps {
-    // children(columnInfo): ReactNode;
-
+    children(client:ExtremumClient): ReactNode;
 }
 
-const SDK:FC<ISDKProps> = ({}) => {
+const SDK:FC<ISDKProps> = ({children}) => {
 
-    // const client = new ExtremumClient().login()
+    const [data,setData] = useState()
+
+    const client = new ExtremumClient(config.url,{defaultAppId:config["app-id"]})
+    const currentToken = localStorage.getItem('token')
+    console.log(currentToken,"token")
+    if (currentToken){
+        client.setAuthToken(currentToken)
+    }
+
 
     return (
         <div>
-            {/*{children}*/}
+            {children(client)}
         </div>
     );
 };

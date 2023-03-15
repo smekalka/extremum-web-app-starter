@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import Buckets from "../components/buckets/Buckets";
 import Login from "../extremum/modules/authentication/login/Login";
