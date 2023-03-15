@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./login.css";
-import config from '../../config.json';
+import config from '../../../../config.json';
 import {useNavigate} from "react-router-dom";
 
 function Login() {
@@ -10,21 +10,21 @@ function Login() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const details = {
-      'client_id': 'crud-test',
-      'username': e.target.email.value,
-      'password': e.target.password.value,
-      'grant_type': 'password'
+    const details:{[key:string]:string} = {
+      client_id: 'crud-test',
+      username: e.target.email.value,
+      password: e.target.password.value,
+      grant_type: 'password'
     };
 
     let formBody = [];
     for (const property in details) {
       const encodedKey = encodeURIComponent(property);
-      // @ts-ignore
+
       const encodedValue = encodeURIComponent(details[property]);
       formBody.push(encodedKey + "=" + encodedValue);
     }
-
+    console.log(config,"CONFIG")
     const tokenData = await fetch(
       `${config.url}/realms/extremum/protocol/openid-connect/token`,
       {
