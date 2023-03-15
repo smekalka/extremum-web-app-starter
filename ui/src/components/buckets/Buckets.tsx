@@ -19,7 +19,6 @@ const Buckets = () => {
     return (
         <div>
             {
-
             }
             {/*<SDK>*/}
             {/*    {*/}
