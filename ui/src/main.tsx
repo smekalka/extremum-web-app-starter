@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import App from "./app";
+import App from "./app/App";
 
 // export default function Main() {
 //   return (

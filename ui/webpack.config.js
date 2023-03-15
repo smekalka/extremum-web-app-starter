@@ -25,7 +25,6 @@ module.exports = {
     },
     plugins: [new HtmlWebpackPlugin({
         template: "static/index.html",
-        hash: true, // Cache busting
         filename: '../dist/index.html'
     })],
     devServer:{
