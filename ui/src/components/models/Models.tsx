@@ -5,7 +5,7 @@ import {EntityModel} from "extremum-sdk/lib/interfaces";
 interface IBucketsProps {
 }
 
-const Buckets = () => {
+const Models = () => {
 
     const [models,setModels] = useState<EntityModel[]>()
 
@@ -37,4 +37,4 @@ const Buckets = () => {
     );
 };
 
-export default Buckets;
+export default Models;

@@ -1,4 +1,4 @@
-import Buckets from "../../components/buckets/Buckets";
+import Models from "../../components/models/Models";
 import Login from "../../extremum/modules/authentication/login/Login";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import React from "react";
@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children }:{ children:any }) => {
 const AppRouter = () => {
     const routes = [{
         path: "/",
-        element: <ProtectedRoute><Buckets/></ProtectedRoute>
+        element: <ProtectedRoute><Models/></ProtectedRoute>
     },{
         path: "/login",
         element:<Login />
