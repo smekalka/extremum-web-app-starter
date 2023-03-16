@@ -1,40 +1,31 @@
 import React from 'react';
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import Buckets from "../components/buckets/Buckets";
-import Login from "../extremum/modules/authentication/login/Login";
+import {ReactKeycloakProvider} from '@react-keycloak/web'
+import keycloak from './keycloak'
+import AppRouter from "./routes/AppRouter";
+import {AuthClientError, AuthClientEvent, AuthClientTokens} from "@react-keycloak/core/lib/types";
 
-export const ProtectedRoute = ({ children }:{ children:any }) => {
-    if (!localStorage.getItem('token')) {
-        return <Navigate to="/login" />;
-    }
-    return children;
-};
 
-function Router() {
-    const routes = [{
-        path: "/",
-        element:<ProtectedRoute><Buckets/></ProtectedRoute>
-    },{
-        path: "/login",
-        element:<Login />
-    }]
 
-    return (<BrowserRouter>
-        <Routes>
-            {
-                routes.map( args =>
-                    <Route {...args}  />
-                )
-            }
-        </Routes>
-    </BrowserRouter>)
-}
-
-// Добавьте ваш код ниже
 function App() {
 
+    // Обработка получения keycloak токена,
+    // мы не рекомендуем использовать localstorage для хранения токена
+    const onTokensHandler = (tokens: AuthClientTokens)  => {
+        if (tokens.token){
+            localStorage.setItem("token",tokens.token)
+        }
+    }
+
+    const onEventHandler = (eventType: AuthClientEvent, error?: AuthClientError) =>{
+        if (eventType === "onAuthSuccess" ){
+        //    Обработка успешной авторизации и тп
+        }
+    }
+
     return (
-        <Router />
+        <ReactKeycloakProvider onEvent={onEventHandler} onTokens={onTokensHandler} authClient={keycloak}>
+            <AppRouter/>
+        </ReactKeycloakProvider>
     )
 }
 

@@ -1,31 +1,38 @@
-import React, {useState} from 'react';
-import SDK from "../../extremum/modules/sdk/SDK";
-import {useSDK} from "../../extremum/hooks/useSDK";
+import React, {useEffect, useState} from 'react';
+import {useSDK} from "../../extremum/modules/sdk/hooks/useSDK";
+import {EntityModel} from "extremum-sdk/lib/interfaces";
 
 interface IBucketsProps {
 }
 
 const Buckets = () => {
 
-    const [buckets,setBuckets] = useState()
+    const [models,setModels] = useState<EntityModel[]>()
 
     const client = useSDK()
 
-    client.management.storage.buckets.list().then(
-        res => {
-            console.log(res, "RESULT")
-        }
-    ).catch(er =>console.log(er))
+
+    useEffect(()=>{
+        client.management.storage.models.list().then(
+            res => {
+                setModels(res)
+            }
+        ).catch(er =>console.log(er))
+    },[])
+
     return (
         <div>
-            {
-            }
-            {/*<SDK>*/}
-            {/*    {*/}
-            {/*        client => client.management.storage.buckets.list().then(res=><div></div>)*/}
-            {/*    }*/}
-            {/*</SDK>*/}
+            <h2>Hello word!</h2>
 
+            <h4>Example of models from SDK:</h4>
+            {
+                models?.map( model => (<div>
+                    {
+                        model.name
+                    }
+                </div>)
+                )
+            }
         </div>
     );
 };
