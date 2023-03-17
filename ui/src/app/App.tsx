@@ -1,6 +1,6 @@
 import React from 'react';
 import {ReactKeycloakProvider} from '@react-keycloak/web'
-import keycloak from './keycloak'
+import keycloak from '../extremum/keycloak'
 import AppRouter from "./routes/AppRouter";
 import {AuthClientError, AuthClientEvent, AuthClientTokens} from "@react-keycloak/core/lib/types";
 

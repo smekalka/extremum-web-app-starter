@@ -1,5 +1,5 @@
 import Models from "../../components/models/Models";
-import Login from "../../extremum/modules/authentication/login/Login";
+import Login from "../../pages/login/Login";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import React from "react";
 

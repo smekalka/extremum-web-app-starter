@@ -1,37 +1,88 @@
-## Available Scripts
+# extremum web-app starter
 
-In the project directory, you can run:
+Create a React app with prepared dev configuration and ready extremum tools.
 
-### `npm start`
+>This stater was created as a part of the full dev client application on extremum-cli. Check [our doc](https://test.extremum.help/ru/development/hello-world)
+---
+## Quick Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+__For run your app follow next steps:__
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+>1. Move to app folder
+>```shell
+>$ cd ui
+>```
+>2. Install all dependencies 
+>```shell
+>$ npm i 
+>```
+>3. Run your dev serve
+>```shell
+>$ npm run dev
+>```
+>4. Having followed the previous steps, at the shell you can see that your app has been started
+>```shell
+><i> [webpack-dev-server] Project is running at:
+><i> [webpack-dev-server] Loopback: http://localhost:8080/
+><i> [webpack-dev-server] On Your Network (IPv4): http://192.168.31.136:8080/
+><i> [webpack-dev-server] On Your Network (IPv6): http://[fe80::1]:8080/
+> ```
 
-### `npm run build`
+## Project structure overview
+There is initial project structure which is oriented on customized and clean development
+```
+ui
+├── README.md
+├── webpack.config.js 
+├── tsconfig.json
+├── package.json
+├── .gitignore
+├── static
+│   └── index.html
+└── src
+    ├── app  //contains main application architecture context
+    │   ├── App.tsx
+    │   └── routes
+    │       └── AppRouter.tsx
+    │
+    ├── extremum  //contains all tools related with extremum
+    │    ├── keycloak.ts
+    │    └── sdk
+    │        ├── hooks   
+    │        └── sdk.ts
+    │
+    ├── pages
+    │    └── login 
+    │        └── Login.tsx //example of keylock login    
+    ├── components
+    │    └── models 
+    │        └── Models.tsx // connection of useSdk and your app example
+    ├── setupTests.ts
+    ├── index.tsx
+    └── config.json
+```
+___
+ ### extremum module
+1. __SDK.__ For simple using extremum sdk, call `useSdk()` hook. 
+It returns client who allows us to use our API *(for additional information go to [exremum-sdk doc](https://www.npmjs.com/package/extremum-sdk))*.
+```ts
+    const [models,setModels] = useState<EntityModel[]>()
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    const client = useSDK()
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    useEffect(()=>{
+        client.management.storage.models.list().then(
+            res => {
+                setModels(res)
+            }
+        ).catch(er =>console.log(er))
+    },[])
+```
 
-### `npm run eject`
+  
+## Edit app config
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If you want to customize building app configuration, go to `webpack.config.js`.
+It works together with `tsconfig.json` and `.babelrc.js`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

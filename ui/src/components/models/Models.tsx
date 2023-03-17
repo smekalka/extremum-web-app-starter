@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useSDK} from "../../extremum/modules/sdk/hooks/useSDK";
+import {useSDK} from "../../extremum/sdk/hooks/useSDK";
 import {EntityModel} from "extremum-sdk/lib/interfaces";
 
 interface IBucketsProps {
@@ -22,7 +22,7 @@ const Models = () => {
 
     return (
         <div>
-            <h2>Hello word!</h2>
+            <h2>Hello world!</h2>
 
             <h4>Example of models from SDK:</h4>
             {
