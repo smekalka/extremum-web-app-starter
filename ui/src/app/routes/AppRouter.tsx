@@ -1,4 +1,3 @@
-import Models from "../../components/models/Models";
 import Login from "../../pages/login/Login";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import React from "react";
@@ -15,7 +14,7 @@ const ProtectedRoute = ({ children }:{ children:any }) => {
 const AppRouter = () => {
     const routes = [{
         path: "/",
-        element: <ProtectedRoute><Models/></ProtectedRoute>
+        element: <ProtectedRoute><div>Hello world!</div></ProtectedRoute>
     },{
         path: "/login",
         element:<Login />
