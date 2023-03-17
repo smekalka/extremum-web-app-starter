@@ -54,9 +54,7 @@ ui
     ├── pages
     │    └── login 
     │        └── Login.tsx //example of keylock login    
-    ├── components
-    │    └── models 
-    │        └── Models.tsx // connection of useSdk and your app example
+    │
     ├── setupTests.ts
     ├── index.tsx
     └── config.json
