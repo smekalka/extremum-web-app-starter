@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "path": ".configuration"
+    },
+    {
+      "path": "ui"
+    }
+  ],
+  "settings": {
+    "ApplicationWizard.TargetFolder": "/home/t0m/work/extremum/tmp/my-workspace",
+    "vscode-graphql-execution.showExecCodelens": true,
+    "vscode-graphql-execution.result.customCommand.id": "extremum-dev.graphql.viewResult",
+    "vscode-graphql-execution.result.customCommand.caption": "Pretty view"
+  }
+}
