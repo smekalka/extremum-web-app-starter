@@ -11,11 +11,12 @@ module.exports = {
     module: {
         rules: [
             {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-                loader: "babel-loader"
-            }},
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            },
             {
                 test: /\.(ts|tsx)?$/,
                 loader: "ts-loader",
@@ -27,11 +28,12 @@ module.exports = {
         template: "static/index.html",
         filename: '../dist/index.html'
     })],
-    devServer:{
+    devServer: {
         historyApiFallback: true,
-        hot:true
+        hot: true
     },
     resolve: {
+        fallback: {"os": require.resolve("os-browserify/browser"), "path": require.resolve("path-browserify")},
         extensions: ['.ts', '.js', '.json', ".tsx"]
     },
 
